@@ -3,7 +3,7 @@ import axios from 'axios';
 import { promises as fs } from 'fs';
 import { json, error } from '@sveltejs/kit';
 import { STRIPE_API_KEY } from '$env/static/private';
-import { STRIPE_WEBHOOK_SECRET} from '$env/static/private'
+import { STRIPE_WEBHOOK_SECRET } from '$env/static/private';
 
 const stripe = new Stripe(STRIPE_API_KEY, { apiVersion: '2025-07-30' });
 

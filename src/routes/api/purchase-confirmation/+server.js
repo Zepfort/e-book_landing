@@ -2,11 +2,11 @@ import Stripe from 'stripe';
 import axios from 'axios';
 import { promises as fs } from 'fs';
 import { json, error } from '@sveltejs/kit';
-import { STRIPE_API_KEY } from '$env/dynamic/private';
-import { STRIPE_WEBHOOK_SECRET } from '$env/dynamic/private';
-import { SENDER_EMAIL } from '$env/dynamic/private'
+import { env } from '$env/dynamic/private'; 
 
-const stripe = new Stripe(STRIPE_API_KEY, { apiVersion: '2025-07-30' });
+const stripe = new Stripe(env.STRIPE_API_KEY, {
+  apiVersion: '2025-07-30'
+});
 
 // Fungsi untuk membaca e-book dan mengubah ke Base64
 async function getBase64Book() {
@@ -20,7 +20,7 @@ export async function POST({ request }) {
 
   let event;
   try {
-    event = stripe.webhooks.constructEvent(body, sig, STRIPE_WEBHOOK_SECRET);
+    event = stripe.webhooks.constructEvent(body, sig, env.STRIPE_WEBHOOK_SECRET); 
   } catch (err) {
     console.warn('⚠️ Invalid signature:', err.message);
     throw error(400, 'Invalid webhook signature');
@@ -32,7 +32,7 @@ export async function POST({ request }) {
     const base64 = await getBase64Book();
 
     const payload = {
-      from: { email: SENDER_EMAIL, name: "Toko E‑Book" },
+      from: { email: env.SENDER_EMAIL, name: "Testing E-book" }, 
       to: [{ email }],
       subject: "E‑Book Anda Sudah Tersedia 🎉",
       text: "Terima kasih sudah membeli! Silakan unduh e‑book di lampiran.",
@@ -47,9 +47,9 @@ export async function POST({ request }) {
     };
 
     await axios.post('https://api.mailersend.com/v1/email', payload, {
-      headers: { 
-        Authorization: `Bearer ${process.env.MAILERSEND_API_KEY}`,
-        "Content-Type": "application/json"
+      headers: {
+        Authorization: `Bearer ${env.MAILERSEND_API_KEY}`, 
+        'Content-Type': 'application/json'
       }
     });
   }

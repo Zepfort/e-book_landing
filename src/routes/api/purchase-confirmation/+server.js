@@ -2,8 +2,9 @@ import Stripe from 'stripe';
 import axios from 'axios';
 import { promises as fs } from 'fs';
 import { json, error } from '@sveltejs/kit';
-import { STRIPE_API_KEY } from '$env/static/private';
-import { STRIPE_WEBHOOK_SECRET } from '$env/static/private';
+import { STRIPE_API_KEY } from '$env/dynamic/private';
+import { STRIPE_WEBHOOK_SECRET } from '$env/dynamic/private';
+import { SENDER_EMAIL } from '$env/dynamic/private'
 
 const stripe = new Stripe(STRIPE_API_KEY, { apiVersion: '2025-07-30' });
 
@@ -31,7 +32,7 @@ export async function POST({ request }) {
     const base64 = await getBase64Book();
 
     const payload = {
-      from: { email: process.env.SENDER_EMAIL, name: "Toko E‑Book" },
+      from: { email: SENDER_EMAIL, name: "Toko E‑Book" },
       to: [{ email }],
       subject: "E‑Book Anda Sudah Tersedia 🎉",
       text: "Terima kasih sudah membeli! Silakan unduh e‑book di lampiran.",

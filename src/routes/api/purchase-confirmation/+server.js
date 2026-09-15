@@ -8,10 +8,18 @@ const stripe = new Stripe(env.STRIPE_API_KEY, {
   apiVersion: '2025-07-30'
 });
 
+// Lacak ID peristiwa yang telah diproses untuk mencegah pengiriman email ganda saat webhook dicoba ulang
+const processedEvents = new Set();
+
+// Cache Base64 PDF di memori
+let cachedBase64 = null;
+
 // Fungsi untuk membaca e-book dan mengubah ke Base64
 async function getBase64Book() {
-  const buffer = await fs.readFile('static/Testing_ebook.pdf');
-  return buffer.toString('base64');
+	if (cachedBase64) return cachedBase64;
+	const buffer = await fs.readFile('static/Testing_ebook.pdf');
+	cachedBase64 = buffer.toString('base64');
+	return cachedBase64;
 }
 
 export async function POST({ request }) {
@@ -27,6 +35,11 @@ export async function POST({ request }) {
   }
 
   if (event.type === 'checkout.session.completed') {
+    if (processedEvents.has(event.id)) {
+      return json({ received: true, duplicate: true });
+    }
+    processedEvents.add(event.id);
+
     const session = event.data.object;
     const email = session.customer_email;
     const base64 = await getBase64Book();

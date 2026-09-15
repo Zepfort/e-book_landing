@@ -1,6 +1,7 @@
 import Stripe from 'stripe';
 import axios from 'axios';
 import { promises as fs } from 'fs';
+import path from 'node:path';
 import { json, error } from '@sveltejs/kit';
 import { env } from '$env/dynamic/private'; 
 
@@ -17,7 +18,8 @@ let cachedBase64 = null;
 // Fungsi untuk membaca e-book dan mengubah ke Base64
 async function getBase64Book() {
 	if (cachedBase64) return cachedBase64;
-	const buffer = await fs.readFile('static/Testing_ebook.pdf');
+	const pdfPath = path.resolve('static/Testing_ebook.pdf');
+	const buffer = await fs.readFile(pdfPath);
 	cachedBase64 = buffer.toString('base64');
 	return cachedBase64;
 }

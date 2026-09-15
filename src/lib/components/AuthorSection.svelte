@@ -8,7 +8,7 @@
         <div class="w-1/2 mr-8 text-xl font-medium text-justify">
             <p>
                 Niklas Fischer is a seasoned expatriate with over seven years of
-experience living in Spain. Originally from New York, John left behind
+experience living in Spain. Originally from New York, Niklas left behind
 the hustle of corporate America to embrace a more fulfilling life on the
 sun-soaked coasts of Spain. Through his own journey, he has navigated
 the challenges of securing visas, finding the perfect home, and adapting
@@ -19,7 +19,7 @@ to a new culture, making him an expert in the field of relocation.
 learned firsthand the intricacies of moving to a new country. His goal
 is to help others avoid common pitfalls and make their transition to
 life in Spain as smooth as possible. When not sharing his expertise,
-John enjoys exploring Spain’s rich culture and history, fully embracing
+Niklas enjoys exploring Spain’s rich culture and history, fully embracing
 the lifestyle he once dreamed of.
             </p>
         </div>

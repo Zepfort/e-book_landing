@@ -24,7 +24,7 @@
   {
     question: "Is the information in the ebook up-to-date?",
     answer:
-      "Yes, the ebook is regularly updated to reflect the latest changes in Spanish immigration laws, visa requirements, and other relevant information. The author, John Smith, stays on top of these updates to ensure that you're receiving the most accurate and current guidance available.",
+      "Yes, the ebook is regularly updated to reflect the latest changes in Spanish immigration laws, visa requirements, and other relevant information. The author, Niklas Fischer, stays on top of these updates to ensure that you're receiving the most accurate and current guidance available.",
   },
   {
     question: "Can I get a refund if I'm not satisfied?",
@@ -33,13 +33,13 @@
   },
     ];
 
-    let questionCurrentlyExpended = $state(-1);
+    let questionCurrentlyExpanded = $state(-1);
 
     function onclick(index) {
-        if(questionCurrentlyExpended === index){
-            questionCurrentlyExpended = -1;
+        if(questionCurrentlyExpanded === index){
+            questionCurrentlyExpanded = -1;
         } else {
-            questionCurrentlyExpended = index;
+            questionCurrentlyExpanded = index;
         }
     }
 </script>
@@ -48,14 +48,14 @@
     <div class="container flex flex-col justify-center pb-8">
         {#each faqs as faq, index}
             
-        <FaqItem {faq} isExpended={index === questionCurrentlyExpended} 
+        <FaqItem {faq} isExpanded={index === questionCurrentlyExpanded} 
             onclick={()=> onclick(index)}/>
         {/each}
     </div>
     <div class="flex flex-col justify-end items-center">
         <Button>BUY NOW</Button>
         <p>Any other questions?</p>
-        <p class="flex flex-rom">
+        <p class="flex flex-row items-center gap-1">
             Hit me up on twitter <img src={TwitterIcon} alt="Twitter" class="max-w-[20px]"/>
         </p>
     </div>

@@ -7,7 +7,7 @@
 	<div class="flex w-1/2 flex-col items-center justify-center bg-black px-4 text-white">
 		<h1 class="mb-4 pt-12 text-center text-6xl leading-tight font-extrabold">
 			ERROR WHILE <br />
-			PURCASHING
+			PURCHASING
 		</h1>
 		<p class="mb-8 flex px-[100px] text-center text-lg leading-relaxed">
 			We’re sorry, but it looks like there was an issue with your purchase. Don’t

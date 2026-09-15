@@ -7,7 +7,7 @@
 		<h1 class="mb-4 pt-12 text-center text-6xl leading-tight font-extrabold">
 			THANK YOU <br />
 			FOR <br />
-			PURCASHING
+			PURCHASING
 		</h1>
 		<p class="mb-16 flex px-[100px] text-center text-lg leading-relaxed">
 			You've made a great decision by choosing this guide to help you on your journey to Spain.

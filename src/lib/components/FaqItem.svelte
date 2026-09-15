@@ -1,11 +1,11 @@
 <script>
     import Chevron from "/src/assets/icons/chevron-down.svg"
 
-    let {faq, isExpended, ...props} = $props()
+    let {faq, isExpanded, ...props} = $props()
 </script>
 
 <button class=" flex items-start p-6 border-b-1 border-gray-500 cursor-pointer"
-    class:container-expended={isExpended} {...props}>
+    class:container-expanded={isExpanded} {...props}>
     <div class=" pr-[150px] flex-grow">
         <p class="flex flex-start text-xl font-[600]">{faq.question}</p>
         <p class="text-justify answer mt-4 font-medium text-lg max-h-0 overflow-hidden ">{faq.answer}</p>
@@ -21,18 +21,18 @@
     .answer {
         transition: 
             max-height 0.3 ease-out,
-            opacitry 0.3s ease-out;
+            opacity 0.3s ease-out;
     }
 
     button img {
         transition: transform 0.3s linear;
     }
 
-    .container-expended img {
+    .container-expanded img {
         transform: rotate(180deg);
     }
 
-    .container-expended .answer {
+    .container-expanded .answer {
         max-height: unset;  
         opacity: 100%; 
     }

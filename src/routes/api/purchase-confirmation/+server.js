@@ -19,9 +19,17 @@ let cachedBase64 = null;
 async function getBase64Book() {
 	if (cachedBase64) return cachedBase64;
 	const assetPath = bookUrl.startsWith('/') ? bookUrl.slice(1) : bookUrl;
-	const buffer = await readFile(new URL(`../client/${assetPath}`, import.meta.url));
-	cachedBase64 = buffer.toString('base64');
-	return cachedBase64;
+	let dir = new URL('.', import.meta.url);
+	for (let i = 0; i < 8; i++) {
+		try {
+			const buffer = await readFile(new URL(assetPath, dir));
+			cachedBase64 = buffer.toString('base64');
+			return cachedBase64;
+		} catch {
+			dir = new URL('..', dir);
+		}
+	}
+	throw new Error('Book asset not found: ' + assetPath);
 }
 
 export async function POST({ request }) {

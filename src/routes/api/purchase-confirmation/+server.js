@@ -1,9 +1,9 @@
 import Stripe from 'stripe';
 import axios from 'axios';
-import { promises as fs } from 'fs';
-import path from 'node:path';
+import { readFile } from 'node:fs/promises';
 import { json, error } from '@sveltejs/kit';
-import { env } from '$env/dynamic/private'; 
+import { env } from '$env/dynamic/private';
+import bookUrl from '$lib/Testing_ebook.pdf?url';
 
 const stripe = new Stripe(env.STRIPE_API_KEY, {
   apiVersion: '2025-07-30'
@@ -18,8 +18,8 @@ let cachedBase64 = null;
 // Fungsi untuk membaca e-book dan mengubah ke Base64
 async function getBase64Book() {
 	if (cachedBase64) return cachedBase64;
-	const pdfPath = path.resolve('static/Testing_ebook.pdf');
-	const buffer = await fs.readFile(pdfPath);
+	const assetPath = bookUrl.startsWith('/') ? bookUrl.slice(1) : bookUrl;
+	const buffer = await readFile(new URL(`../client/${assetPath}`, import.meta.url));
 	cachedBase64 = buffer.toString('base64');
 	return cachedBase64;
 }

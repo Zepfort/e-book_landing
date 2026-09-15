@@ -1,7 +1,7 @@
 <script>
     import FaqItem from "./FaqItem.svelte";
     import Button from "./Button.svelte";
-    import TwitterIcon from "/src/assets/icons/twitter.webp"
+    import TwitterIcon from "/src/assets/icons/twitter-x.svg"
 
     
 
@@ -47,7 +47,6 @@
     <h2 class="text-6xl font-bold mb-8">Frequently asked questions</h2>
     <div class="container flex flex-col justify-center pb-8">
         {#each faqs as faq, index}
-            
         <FaqItem {faq} isExpanded={index === questionCurrentlyExpanded} 
             onclick={()=> onclick(index)}/>
         {/each}
@@ -56,7 +55,7 @@
         <Button>BUY NOW</Button>
         <p>Any other questions?</p>
         <p class="flex flex-row items-center gap-1">
-            Hit me up on twitter <img src={TwitterIcon} alt="Twitter" class="max-w-[20px]"/>
+            Hit me up on X (Twitter) <img src={TwitterIcon} alt="Follow on X (Twitter)" class="max-w-[20px]"/>
         </p>
     </div>
 </section>

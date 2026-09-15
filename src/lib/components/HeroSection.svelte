@@ -19,8 +19,8 @@
 			There's no need to make the same mistake i made
 		</h4>
 		<div class="mt-96 flex items-end ">
-			<img src={phoneCover} alt="" class="absolute w-[30%] bottom-[10%] right-[55%] transform translate-y-[25%]" />
-			<img src={bookCover} alt="" class="absolute w-[65%] bottom-[25%] right-[4%] transform translate-y-[50%]" />
+			<img src={phoneCover} alt="E-book preview shown on a mobile phone" class="absolute w-[30%] bottom-[10%] right-[55%] transform translate-y-[25%]" />
+			<img src={bookCover} alt="Move to Spain e-book cover" class="absolute w-[65%] bottom-[25%] right-[4%] transform translate-y-[50%]" />
 		</div>
 	</div>
 

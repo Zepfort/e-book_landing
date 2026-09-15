@@ -24,7 +24,7 @@ the lifestyle he once dreamed of.
             </p>
         </div>
         <div class="flex w-1/2 justify-end">
-            <img src={authorPic} alt="Author Pic" class="max-w-[400px]"/>
+            <img src={authorPic} alt="Portrait of Niklas Fischer, author of the Move to Spain e-book" class="max-w-[400px]"/>
         </div>
     </div>
 </section>

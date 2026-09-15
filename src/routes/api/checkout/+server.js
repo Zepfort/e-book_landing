@@ -7,6 +7,7 @@ const stripe = new Stripe(STRIPE_API_KEY)
 
 export async function POST(){
     try {
+        const baseUrl = PUBLIC_FRONTEND_URL.replace(/\/+$/, '');
         const session = await stripe.checkout.sessions.create({
             payment_method_types: ['card'],
             line_items: [
@@ -16,11 +17,12 @@ export async function POST(){
                 },
             ],
             mode: "payment",
-            success_url: `${PUBLIC_FRONTEND_URL}/checkout/success`,
-            cancel_url: `${PUBLIC_FRONTEND_URL}/checkout/failure`
+            success_url: `${baseUrl}/checkout/success`,
+            cancel_url: `${baseUrl}/checkout/failure`
         });    
         return json({ sessionId: session.id})
-    } catch (error) {
-        return json({ error }, { status: 500})
+    } catch (err) {
+        console.error('[checkout] Failed to create session:', err.message);
+        return json({ error: 'Failed to create checkout session' }, { status: 500})
     }
 }

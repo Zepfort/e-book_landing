@@ -3,10 +3,12 @@
 	import ChapterPreview from "$components/ChapterPreview.svelte";
 	import AuthorSection from "$components/AuthorSection.svelte";
 	import FaqSection from "$components/FaqSection.svelte";
+	import { PUBLIC_FRONTEND_URL } from "$env/static/public";
 </script>
 
 <svelte:head>
 	<title>Move to Spain — The Complete Relocation E-book | $10</title>
+	<link rel="canonical" href={PUBLIC_FRONTEND_URL.replace(/\/+$/, '') + '/'} />
 	<meta name="description" content="Comprehensive guide to relocating to Spain. Learn about visas, housing, jobs, culture, and finances. Written by a 7-year expat." />
 	<meta property="og:title" content="Move to Spain — Complete Relocation E-book" />
 	<meta property="og:description" content="The only guide you need for moving to Spain. Visas, housing, jobs, culture & finances covered." />
